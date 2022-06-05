@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ParkService } from '../park.service';
 
 @Component({
   selector: 'app-new-parks',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewParksComponent implements OnInit {
 
-  constructor() { }
+  // magic DI... dependency injection
+  constructor(
+    private parksSvc: ParkService
+  ) { }
 
   ngOnInit(): void {
+
+    const p = this.parksSvc.getParkFromTheCloud();
+    console.log(p); 
   }
 
 }
